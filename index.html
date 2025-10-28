@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Магічна куля</title>
+<link rel="stylesheet" href="Styles/index.css">
+</head>
+<body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const arr = document.createElement("div");
+  arr.id = "Ball";
+
+  const label = document.createElement("label");
+  label.htmlFor = "userQuestion";
+  label.textContent = "Ваше запитання:";
+
+  const br = document.createElement("br");
+
+  const input = document.createElement("input");
+  input.id = "userQuestion";
+  input.type = "text";
+  input.placeholder = "Запитай щось...";
+
+  const button = document.createElement("button");
+  button.id = "ButtonAsk";
+  button.textContent = "Дізнатись відповідь";
+
+  const answer = document.createElement("div");
+  answer.id = "Answer";
+  answer.textContent = "?";
+
+  arr.append(label, br, input, button, answer);
+  document.body.appendChild(arr);
+
+  const List = ["Так", "Ні", "Можливо", "Є сумніви"];
+
+  button.addEventListener("click", () => {
+    const text = input.value.trim();
+    if (!text) {
+      alert("Введіть запитання!");
+      return;
+    }
+    const index = Math.floor(Math.random() * List.length);
+    answer.textContent = List[index];
+  });
+});
+</script>
+</body>
+</html>
